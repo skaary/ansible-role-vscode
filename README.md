@@ -30,7 +30,7 @@ There are two ways to find the extension ID: on the extension details page or fr
 
 Navigate to the extensions detail page of the extension you wish to install and look for the extension ID next to the extension name (highlighted in orange):
 
-![](extensionID2.png)
+![Extension ID from Extension Detail Page](extensionID.png)
 
 ### Command line
 
