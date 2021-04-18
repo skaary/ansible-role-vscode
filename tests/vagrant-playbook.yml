@@ -1,0 +1,9 @@
+---
+- hosts: all
+  vars:
+    vscode_extensions_install:
+      - alefragnani.Bookmarks
+      - alefragnani.project-manager
+      - ban.spellright
+  roles:
+    - ../ansible-role-vscode

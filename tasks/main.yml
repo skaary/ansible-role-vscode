@@ -1,0 +1,30 @@
+---
+- name: download visual studio code .deb file
+  get_url:
+    url: "{{ vscode_download_url }}"
+    dest: "{{ vscode_deb_path }}"
+
+- name: install visual studio code
+  apt:
+    deb: "{{ vscode_deb_path }}"
+  become: true
+
+- name: get list of installed extensions
+  command: "code --list-extensions"
+  changed_when: false
+  register: installed_extensions
+  become: true
+  become_user: "{{ vscode_user }}"
+
+- name: install visual studio code extensions
+  command: code --install-extension {{ item }}
+  loop: "{{ vscode_extensions_install }}"
+  when: item not in installed_extensions.stdout
+  become: true
+  become_user: "{{ vscode_user }}"
+
+- name: uninstall visual studio code extensions
+  command: code --uninstall-extension {{ item }}
+  with_items: "{{ vscode_extensions_uninstall }}"
+  become: true
+  become_user: "{{ vscode_user }}"

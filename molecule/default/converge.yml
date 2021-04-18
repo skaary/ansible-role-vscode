@@ -1,0 +1,30 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    vscode_user: molecule
+    vscode_extensions_install:
+      - alefragnani.Bookmarks
+      - alefragnani.project-manager
+      - ban.spellright
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt: update_cache=true cache_valid_time=600
+
+    - name: install req dependencies
+      apt:
+        name:
+          - libx11-xcb1
+          - libasound2
+        state: present
+
+    - name: create test user
+      user:
+        name: molecule
+        shell: /bin/bash
+
+  tasks:
+    - name: "Include ansible-role-vscode"
+      include_role:
+        name: "ansible-role-vscode"

@@ -1,0 +1,6 @@
+---
+vscode_user: "{{ ansible_user_id }}"
+vscode_download_url: https://go.microsoft.com/fwlink/?LinkID=760868
+vscode_deb_path: /tmp/vsc.deb
+vscode_extensions_install: []
+vscode_extensions_uninstall: []
