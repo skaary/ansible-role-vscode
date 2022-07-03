@@ -9,7 +9,7 @@ An Ansible Role that installs [Visual Studio Code](https://code.visualstudio.com
 Download the role directly from git by typing into your terminal:
 
 ```bash
-$ ansible-galaxy install git+https://github.com/skaary/ansible-role-anki.git
+$ ansible-galaxy install git+https://github.com/skaary/ansible-role-vscode.git
 ```
 or
 
