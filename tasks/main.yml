@@ -19,9 +19,17 @@
 - name: install visual studio code extensions
   command: code --install-extension {{ item }}
   loop: "{{ vscode_extensions_install }}"
+  ignore_errors: true
   when: item not in installed_extensions.stdout
+  # register: install_loop_result
   become: true
   become_user: "{{ vscode_user }}"
+
+# - name: print debug for failed loop items
+#   debug:
+#     msg: code extension install has failed items
+#   when: item is failed
+#   with_items: "{{ install_loop_result.results }}"
 
 - name: uninstall visual studio code extensions
   command: code --uninstall-extension {{ item }}
